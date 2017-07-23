@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  color: #fff;
+  background-color: #48b5c0; }
+
+main {
+  width: 400px;
+  height: 650px;
+  margin: 100px auto; }
+
+.result {
+  width: 100%;
+  height: 200px;
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 50px;
+  font-weight: lighter;
+  overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: all .5s ease; }
+
+.key {
+  display: flex;
+  flex-direction: row;
+  height: 450px; }
+  .key .basics {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    height: 100%;
+    background-color: #434343;
+    flex-wrap: wrap; }
+    .key .basics .basic {
+      width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      font-weight: lighter;
+      cursor: pointer; }
+  .key .operators {
+    position: relative;
+    overflow: hidden;
+    width: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #636363; }
+    .key .operators .operator {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 23px;
+      font-weight: lighter;
+      cursor: pointer; }
+
+.ani {
+  position: relative; }
+  .ani::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 110px;
+    height: 110px;
+    border-radius: 55px;
+    animation: press-ani .5s ease; }
+@keyframes press-ani {
+  from {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0, 0); }
+  to {
+    background-color: rgba(255, 255, 255, 0);
+    transform: scale(1, 1); } }
+.anm {
+  position: relative; }
+  .anm::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 110px;
+    height: 110px;
+    border-radius: 55px;
+    animation: press-ani .5s ease; }
+@keyframes press-ani {
+  from {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(0, 0); }
+  to {
+    background-color: rgba(255, 255, 255, 0);
+    transform: scale(1, 1); } }
+
+/*# sourceMappingURL=index.css.map */
