@@ -1,5 +1,6 @@
 (function(){
 	let $result = document.querySelector('.result');
+	let $expr = document.querySelector('.expr')
 	let $plus = document.querySelector('.plus');
 	let $equal = document.querySelector('.equal');
 	let $del = document.querySelector('.del');
@@ -16,9 +17,9 @@
 
 	function set(value){
 		expr = String(value);
-		$result.innerText = expr;
-		$result.style.color = '#000';
-		//$result.style.background="#fff";
+		$expr.innerText = expr;
+		$expr.style.color = '#000';
+		resize();
 		
 	}
 
@@ -26,47 +27,42 @@
 
 	for(let i = 0; i<$number.length;i++){
 		$number[i].addEventListener('click',function(event){
-			let number = event.currentTarget.getAttribute('data');
+			let number = event.currentTarget.getAttribute('data-num');
 			set(expr + number);
 		})
 	}
 
-
-
-	$plus.addEventListener('click',function(event){
-		if(operators.indexOf(expr[expr.length-1])>-1){
-			set(expr.slice(0,expr.length-1)+"+");
+	function resize(){
+		let maxWidth = $result.clientWidth*0.86;
+		if($expr.scrollWidth > maxWidth){
+			$expr.style.transform = `scale(${maxWidth/$expr.scrollWidth})`;
+			$expr.style.transformOrigin = `right center`;
 		}else{
-			set(expr+"+");
+			$expr.style.transform = `scale(1)`;
 		}
-	})
+	}
 
-	$divide.addEventListener('click',function(event){
-		if(operators.indexOf(expr[expr.length-1])>-1){
-			set(expr.slice(0,expr.length-1)+"÷");
-		}else{
-			set(expr+"÷");
+	function op(oper){
+		return function (){
+			if(operators.indexOf(expr[expr.length - 1]) > -1){
+				set(expr.slice(0, expr.length - 1) + oper);
+			}else{
+				set(expr + oper);
+			}
 		}
-	})
-
-	$multiply.addEventListener('click',function(event){
-		if(operators.indexOf(expr[expr.length-1])>-1){
-			set(expr.slice(0,expr.length-1)+"×");
-		}else{
-			set(expr+"×");
-		}
-	})
-
-	$minus.addEventListener('click',function(event){
-		if(operators.indexOf(expr[expr.length-1])>-1){
-			set(expr.slice(0,expr.length-1)+"-");
-		}else{
-			set(expr+"-");
-		}
-	})
+	}
 
 
+	$plus.addEventListener('click',op("+"));
 
+	$divide.addEventListener('click',op("÷"));
+
+	$multiply.addEventListener('click',op("×"));
+
+	$minus.addEventListener('click',op("-"));
+
+
+	//使‘.’不能在一个数字中出现两次
 	$dot.addEventListener('click',function(event){
 		var n = expr.split(/[÷,×,+,-]/);
 		if(n[n.length-1].indexOf('.')===-1){
@@ -74,7 +70,7 @@
 		}
 	})
 
-	//短按从末尾删除
+	//短按del从末尾删除
 	$del.addEventListener('click',function(event){
 		if(hasCal){
 			set("");
@@ -85,7 +81,7 @@
 		}
 	})
 
-	//长按清空
+	//长按del清空
 	var c = 0;
 	$del.addEventListener('mousedown',function(event){
 		time = setInterval(function(){
@@ -109,6 +105,7 @@
 		var digit=2;
 		var di= [];
 		var maxdi = [];
+		
 		//将乘除符号改为*/
 		if(operators.indexOf(expr[expr.length-1])===-1){
 			let fixExpr = expr.split('');
@@ -125,7 +122,6 @@
 						break;
 				}		
 			}
-
 			fixExpr =fixExpr.join("");
 			
 		//改善浮点数计算精度
@@ -149,29 +145,22 @@
 				$del.innerText = "CLR";
 			}catch(e){
 				set("");
-				$result.innerText = "bad expression";
+				$expr.innerText = "bad expression";
 				$result.style.color ="red";
 			}
 		}
 	})
 
-//添加按键动画
-
-for(let i in $btn){
-	$btn[i].addEventListener('click',function(event){
-		console.log(this.classList.contains('anm'));
-		if(this.classList.contains('ani')){
-			this.classList.remove("ani");
-			this.classList.add("anm");
-		}else if(this.classList.contains('anm')){
-			this.classList.remove("anm");
-			this.classList.add("ani");
-		}
-		
-		
+	//添加按键动画
+$btn.forEach(function(i){
+	i.addEventListener('click',function(){
+		i.classList.add('ani')
 	});
+	i.addEventListener("webkitAnimationEnd",function(){
+		i.classList.remove("ani");
+	})
 	
-}
+});
 
 
 })();
