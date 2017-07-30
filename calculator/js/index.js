@@ -88,7 +88,7 @@
 			c++;
 			if(c>1){
 				set("");
-				$result.style.background = "rgb(208, 79, 137)";
+				$result.style.background = "#48b5c0";
 			};
 		},500)
 		
