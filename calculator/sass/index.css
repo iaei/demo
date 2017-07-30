@@ -81,7 +81,7 @@ main {
     left: -5px;
     width: 110%;
     height: 110%;
-    border-radius: 55px;
+    border-radius: 50%;
     animation: press-ani .5s ease; }
 @keyframes press-ani {
   from {
