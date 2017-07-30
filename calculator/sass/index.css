@@ -1,14 +1,22 @@
+html {
+	height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   color: #fff;
-  background-color: #48b5c0; }
+  background-color: #48b5c0;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 main {
   width: 100vw;
   height: 100vh;	
   max-width: 400px;
   max-height: 650px;
-  margin: 0 auto; }
+  }
 
 .result {
   width: 100%;
