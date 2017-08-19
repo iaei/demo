@@ -1,0 +1,79 @@
+body,html {
+	margin: 0;
+	padding: 0;
+}
+
+ul,li {
+	list-style: none;
+}
+
+#fe13 {
+	width: 800px;
+	margin: 0 auto;
+	
+}
+
+header {
+	background-color: darkseagreen;
+	display: flex;
+	justify-content: center;
+}
+
+header ul {
+	display: flex;
+	cursor: pointer;
+}
+
+header ul li {
+	margin:0 10px;
+	cursor: pointer;
+}
+
+main {
+	padding: 40px;
+}
+
+main section {
+	margin: 10px 0;
+}
+.vote {
+	display: flex;
+	font-size: 14px;
+	color:grey;
+}
+
+.vote a {
+	text-decoration: none;
+	color:grey;
+}
+.vote a:visited{
+	color:grey;
+}
+
+.del,.detail {
+	margin-left: 20px;
+	font-size: 13px;
+	color:grey;
+
+}
+
+
+.title {
+	color: blue;
+}
+
+.afterTitle {
+	display: flex;
+}
+
+.fa {
+	height: 20px;
+	width: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}
+footer {
+	background-color: darkseagreen;
+	display: flex;
+	justify-content: center;
+}
